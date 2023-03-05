@@ -3,12 +3,11 @@ package ru.stqa.training.sandbox;
 public class MyFirstProgram {
 
   public static void main(String[] args) {
-    String somebody = "world";
-    System.out.println("Hello, " + somebody + "!");
+    hello();
+  }
 
-    double i = 8.0;
-    double s = i * i;
-    System.out.println("Площадь квадрата со стороной " + i + " равна " + s);
+  public static void hello() {
+    System.out.println("Hello, world!");
   }
 
 }
