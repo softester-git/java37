@@ -3,11 +3,11 @@ package ru.stqa.training.sandbox;
 public class MyFirstProgram {
 
   public static void main(String[] args) {
-    hello();
+    hello("world");
   }
 
-  public static void hello() {
-    System.out.println("Hello, world!");
+  public static void hello(String somebody) {
+    System.out.println("Hello, " + somebody + "!");
   }
 
 }
