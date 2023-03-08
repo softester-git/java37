@@ -1,5 +1,7 @@
 package ru.stqa.training.sandbox;
 
+//import ru.stqa.training.sandbox.Point;
+
 public class MyFirstProgram {
 
   public static void main(String[] args) {
@@ -15,7 +17,7 @@ public class MyFirstProgram {
 
     Point p1 = new Point(3, 5);
     Point p2 = new Point(6, 8);
-    System.out.println("Расстояние между точками с координатами " + p1.x + ", " + p1.y + " и " + p2.x + ", " + p2.y + " составляет: " + Point.distance(p1, p2));
+    System.out.println("Расстояние между точками с координатами " + p1.x + ", " + p1.y + " и " + p2.x + ", " + p2.y + " составляет: " + p1.distance(p2));
   }
 
   public static void hello(String somebody) {
