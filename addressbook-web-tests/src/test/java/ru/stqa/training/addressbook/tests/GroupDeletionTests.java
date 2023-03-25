@@ -11,10 +11,14 @@ public class GroupDeletionTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    GroupData groupNew = new GroupData("Name", "Header", "Footer");
+    GroupData group = new GroupData()
+            .withName("GroupName")
+            .withHeader("GroupHeader")
+            .withFooter("GroupFooter");
+
     app.goTo().groupPage();
     if (app.group().list().size() == 0) {
-      app.group().create(groupNew);
+      app.group().create(group);
     }
   }
 

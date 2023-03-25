@@ -10,8 +10,11 @@ import java.util.List;
 public class GroupCreationTests extends TestBase {
 
   @Test
-  public void testGroupCreation() throws Exception {
-    GroupData group = new GroupData("Group1test", "Group1 header", "Group1 footer");
+  public void testGroupCreation() {
+    GroupData group = new GroupData()
+            .withName("GroupName")
+            .withHeader("GroupHeader")
+            .withFooter("GroupFooter");
 
     app.goTo().groupPage();
     List<GroupData> before = app.group().list();
