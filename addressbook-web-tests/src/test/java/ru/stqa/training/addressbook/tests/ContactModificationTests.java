@@ -3,7 +3,6 @@ package ru.stqa.training.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.training.addressbook.model.ContactData;
-import ru.stqa.training.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
@@ -20,7 +19,6 @@ public class ContactModificationTests extends TestBase {
     List<ContactData> before = app.getContactHelper().getContactList();
     ContactData contactEdit = new ContactData(before.get(before.size() - 1).getId(), "FirstEditName", "LastEditName", "AddressEdit", "2000", "testedit@email.test");
 
-    //app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().initContactModification(before.size() - 1);
 
     app.getContactHelper().fillContactForm(contactEdit);

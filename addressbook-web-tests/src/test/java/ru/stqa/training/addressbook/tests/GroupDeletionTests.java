@@ -9,22 +9,28 @@ import java.util.List;
 
 public class GroupDeletionTests extends TestBase {
 
-  @Test
-  public void testGroupDeletion() throws Exception {
+  @BeforeMethod
+  public void ensurePreconditions() {
+    GroupData groupNew = new GroupData("Name", "Header", "Footer");
     app.getNavigationHelper().gotoGroupPage();
     if (!app.getGroupHelper().isThereAGroup()) {
-      app.getGroupHelper().createGroup(new GroupData("Group1", "Group1 header", "Group1 footer"));
+      app.getGroupHelper().createGroup(groupNew);
     }
+  }
+
+  @Test
+  public void testGroupDeletion() throws Exception {
     List<GroupData> before = app.getGroupHelper().getGroupList();
-    app.getGroupHelper().selectGroup(before.size() - 1);
+    int index = before.size() - 1;
+
+    app.getGroupHelper().selectGroup(index);
     app.getGroupHelper().deleteSelectedGroups();
     app.getGroupHelper().returnToGroupPage();
     List<GroupData> after = app.getGroupHelper().getGroupList();
 
-    Assert.assertEquals(after.size(), before.size() - 1);
+    Assert.assertEquals(after.size(), index);
 
-    before.remove(before.size() - 1);
-
+    before.remove(index);
     Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
     before.sort(byId);
     after.sort(byId);
