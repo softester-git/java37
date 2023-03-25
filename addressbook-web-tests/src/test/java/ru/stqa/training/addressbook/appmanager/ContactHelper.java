@@ -1,13 +1,10 @@
 package ru.stqa.training.addressbook.appmanager;
 
-import static org.testng.Assert.*;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.training.addressbook.model.ContactData;
-import ru.stqa.training.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,18 +65,24 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("home page"));
   }
 
-  public void createContact(ContactData contact) {
+  public void create(ContactData contact) {
     initContactCreation();
     fillContactForm(contact);
     submitContactCreation();
     returnToContactPage();
   }
 
-  public void modifyContact(int index, ContactData contact) {
+  public void modify(int index, ContactData contact) {
     initContactModification(index);
     fillContactForm(contact);
     submitContactModification();
     returnToHomePage();
+  }
+
+  public void delete(int index) {
+    selectContact(index);
+    deleteSelectedContacts();
+    returnToContactPage();
   }
 
   public boolean isThereAContact() {
@@ -90,7 +93,7 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.xpath("//table//tr[@name=\"entry\"]"));
     for (WebElement element : elements) {

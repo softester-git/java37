@@ -18,15 +18,15 @@ public class ContactModificationTests extends TestBase {
             "Address",
             "1000",
             "test@email.test");
-    app.getNavigationHelper().gotoContactPage();
-    if (!app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(contact);
+    app.goTo().contactPage();
+    if (app.contact().list().size() == 0) {
+      app.contact().create(contact);
     }
   }
 
   @Test
   public void testContactModification() {
-    List<ContactData> before = app.getContactHelper().getContactList();
+    List<ContactData> before = app.contact().list();
     int index = before.size() - 1;
     ContactData contact = new ContactData(
             before.get(index).getId(),
@@ -36,8 +36,8 @@ public class ContactModificationTests extends TestBase {
             "2000",
             "testedit@email.test");
 
-    app.getContactHelper().modifyContact(index, contact);
-    List<ContactData> after = app.getContactHelper().getContactList();
+    app.contact().modify(index, contact);
+    List<ContactData> after = app.contact().list();
 
     Assert.assertEquals(after.size(), before.size());
 
