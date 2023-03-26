@@ -110,14 +110,16 @@ public class ContactHelper extends HelperBase {
               .getAttribute("value"));
       String lastName = row.get(1).getText();
       String firstName = row.get(2).getText();
-      String[] phones = row.get(5).getText().split("\n");
+      String allPhones = row.get(5).getText();
+      String allEmails = row.get(4).getText();
+      String address = row.get(3).getText();
       contactCache.add(new ContactData()
               .withId(id)
               .withFirstName(firstName)
               .withLastName(lastName)
-              .withHomePhone(phones[0])
-              .withMobilePhone(phones[1])
-              .withWorkPhone(phones[2]));
+              .withAddress(address)
+              .withAllPhones(allPhones)
+              .withAllEmails(allEmails));
     }
     return new Contacts(contactCache);
   }
@@ -126,17 +128,25 @@ public class ContactHelper extends HelperBase {
     initContactModification(contact.getId());
     String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
+    String email = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
     return new ContactData()
             .withId(contact.getId())
             .withFirstName(firstName)
             .withLastName(lastName)
+            .withAddress(address)
             .withHomePhone(home)
             .withMobilePhone(mobile)
-            .withWorkPhone(work);
+            .withWorkPhone(work)
+            .withEmail(email)
+            .withEmail_2(email2)
+            .withEmail_3(email3);
   }
 
 }
