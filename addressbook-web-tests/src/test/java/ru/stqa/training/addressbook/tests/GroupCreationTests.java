@@ -3,6 +3,8 @@ package ru.stqa.training.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
 import ru.stqa.training.addressbook.model.GroupData;
 import ru.stqa.training.addressbook.model.Groups;

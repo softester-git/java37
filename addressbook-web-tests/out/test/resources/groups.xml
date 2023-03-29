@@ -4,24 +4,4 @@
     <header>TestHeader0</header>
     <footer>TestFooter0</footer>
   </group>
-  <group>
-    <name>TestGroup1</name>
-    <header>TestHeader1</header>
-    <footer>TestFooter1</footer>
-  </group>
-  <group>
-    <name>TestGroup2</name>
-    <header>TestHeader2</header>
-    <footer>TestFooter2</footer>
-  </group>
-  <group>
-    <name>TestGroup3</name>
-    <header>TestHeader3</header>
-    <footer>TestFooter3</footer>
-  </group>
-  <group>
-    <name>TestGroup4</name>
-    <header>TestHeader4</header>
-    <footer>TestFooter4</footer>
-  </group>
 </list>
