@@ -3,7 +3,9 @@ package ru.stqa.training.addressbook.generators;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
+import com.thoughtworks.xstream.XStream;
 import ru.stqa.training.addressbook.model.ContactData;
+import ru.stqa.training.addressbook.model.GroupData;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -38,7 +40,7 @@ public class ContactDataGenerator {
     if (format.equals("csv")) {
       saveAsCsv(contacts, new File(file));
     } else if (format.equals("xml")) {
-      //saveAsXml(contacts, new File(file));
+      saveAsXml(contacts, new File(file));
     } else if (format.equals("json")) {
       //saveAsJson(contacts, new File(file));
     } else {
@@ -71,4 +73,15 @@ public class ContactDataGenerator {
     }
     writer.close();
   }
+
+  private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
+    XStream xStream = new XStream();
+    xStream.processAnnotations(ContactData.class);
+    xStream.allowTypes(new Class[]{ContactData.class});
+    String xml = xStream.toXML(contacts);
+    Writer writer = new FileWriter(file);
+    writer.write(xml);
+    writer.close();
+  }
+
 }
