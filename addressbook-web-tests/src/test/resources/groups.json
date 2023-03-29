@@ -23,20 +23,5 @@
     "name": "TestGroup4",
     "header": "TestHeader4",
     "footer": "TestFooter4"
-  },
-  {
-    "name": "TestGroup5",
-    "header": "TestHeader5",
-    "footer": "TestFooter5"
-  },
-  {
-    "name": "TestGroup6",
-    "header": "TestHeader6",
-    "footer": "TestFooter6"
-  },
-  {
-    "name": "TestGroup7",
-    "header": "TestHeader7",
-    "footer": "TestFooter7"
   }
 ]

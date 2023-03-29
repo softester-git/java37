@@ -24,19 +24,4 @@
     <header>TestHeader4</header>
     <footer>TestFooter4</footer>
   </group>
-  <group>
-    <name>TestGroup5</name>
-    <header>TestHeader5</header>
-    <footer>TestFooter5</footer>
-  </group>
-  <group>
-    <name>TestGroup6</name>
-    <header>TestHeader6</header>
-    <footer>TestFooter6</footer>
-  </group>
-  <group>
-    <name>TestGroup7</name>
-    <header>TestHeader7</header>
-    <footer>TestFooter7</footer>
-  </group>
 </list>
