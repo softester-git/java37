@@ -24,6 +24,7 @@
         <property name="hibernate.connection.useUnicode">true</property>
 
         <mapping class="ru.stqa.training.addressbook.model.GroupData" />
+        <mapping class="ru.stqa.training.addressbook.model.ContactData" />
 
     </session-factory>
 </hibernate-configuration>

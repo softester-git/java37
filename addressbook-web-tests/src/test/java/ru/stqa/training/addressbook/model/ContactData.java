@@ -3,32 +3,56 @@ package ru.stqa.training.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
 
   @XStreamOmitField
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
   @Expose
+  @Column(name = "firstname")
   private String firstName;
   @Expose
+  @Column(name = "lastname")
   private String lastName;
+  @Transient
+  private String group;
   @Expose
+  @Column(name = "address")
   private String address;
   @Expose
+  @Column(name = "home")
+  @Type(type = "text")
   private String homePhone;
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobilePhone;
+  @Column(name = "work")
+  @Type(type = "text")
   private String workPhone;
+  @Transient
   private String allPhones;
   @Expose
+  @Column(name = "email")
   private String email;
+  @Column(name = "email2")
   private String email2;
+  @Column(name = "email3")
   private String email3;
+  @Transient
   private String allEmails;
-  private File photo;
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
 
 
   public int getId() {
@@ -66,8 +90,9 @@ public class ContactData {
   }
   public String getAllEmails() { return allEmails; }
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
+  public String getGroup() { return group; }
 
   @Override
   public boolean equals(Object o) {
@@ -159,7 +184,22 @@ public class ContactData {
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
+  public ContactData withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public ContactData withEmail3(String email3) {
+    this.email3 = email3;
     return this;
   }
 
