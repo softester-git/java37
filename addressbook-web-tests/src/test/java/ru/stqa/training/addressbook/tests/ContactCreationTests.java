@@ -73,7 +73,7 @@ public class ContactCreationTests extends TestBase {
     }
   }
 
-  @Test(dataProvider = "validContactsXml")
+  @Test(dataProvider = "validContactsJson")
   public void testContactCreation(ContactData contact) {
     File photo = new File("src" + File.separator
             + "test" + File.separator
@@ -82,10 +82,10 @@ public class ContactCreationTests extends TestBase {
     contact.withPhoto(photo);
 
     app.goTo().contactPage();
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     app.contact().create(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
 
