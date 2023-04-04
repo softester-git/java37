@@ -21,6 +21,12 @@ public class ContactModificationTests extends TestBase {
               .withAddress("Address")
               .withHomePhone("1000")
               .withEmail("test@email.test");
+      File photo = new File("src" + File.separator
+              + "test" + File.separator
+              + "resources" + File.separator
+              + "stru.jpeg");
+      contact.withPhoto(photo);
+
       app.goTo().contactPage();
       app.contact().create(contact);
     }
@@ -48,6 +54,7 @@ public class ContactModificationTests extends TestBase {
     assertThat(app.contact().getContactCount(), equalTo(before.size()));
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
+    verifyContactListInUi();
   }
 
 }

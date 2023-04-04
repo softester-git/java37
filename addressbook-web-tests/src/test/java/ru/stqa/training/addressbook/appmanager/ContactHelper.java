@@ -6,8 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.training.addressbook.model.ContactData;
 import ru.stqa.training.addressbook.model.Contacts;
+import ru.stqa.training.addressbook.tests.ContactPhoneTests;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ContactHelper extends HelperBase {
 
@@ -30,7 +33,11 @@ public class ContactHelper extends HelperBase {
     type(By.name("lastname"), contactData.getLastName());
     type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHomePhone());
+    type(By.name("work"), contactData.getWorkPhone());
+    type(By.name("mobile"), contactData.getMobilePhone());
     type(By.name("email"), contactData.getEmail());
+    type(By.name("email2"), contactData.getEmail_2());
+    type(By.name("email3"), contactData.getEmail_3());
     attache(By.name("photo"), contactData.getPhoto());
   }
 
@@ -148,6 +155,25 @@ public class ContactHelper extends HelperBase {
             .withEmail(email)
             .withEmail_2(email2)
             .withEmail_3(email3);
+  }
+
+  public String mergePhones(ContactData contact) {
+    return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
+            .stream().filter((s) -> !s.equals(""))
+            .map(ContactHelper::cleaned)
+            .collect(Collectors.joining("\n"));
+  }
+
+  public String mergeEmails(ContactData contact) {
+    return Arrays.asList(contact.getEmail(), contact.getEmail_2(), contact.getEmail_3())
+            .stream().filter((s) -> !s.equals(""))
+            .collect(Collectors.joining("\n"));
+  }
+
+  public static String cleaned(String phone) {
+    return phone
+            .replaceAll("\\s", "")
+            .replaceAll("[-()]", "");
   }
 
 }

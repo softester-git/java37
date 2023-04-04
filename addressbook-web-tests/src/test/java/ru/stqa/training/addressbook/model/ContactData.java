@@ -50,8 +50,9 @@ public class ContactData {
   private String email3 = "";
   @Transient
   private String allEmails = "";
-  @Column(name = "photo")
-  @Type(type = "text")
+  //@Column(name = "photo")
+  //@Type(type = "text")
+  @Transient
   private String photo = "";
 
 
@@ -95,7 +96,19 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(group, that.group) && Objects.equals(address, that.address) && Objects.equals(homePhone, that.homePhone) && Objects.equals(mobilePhone, that.mobilePhone) && Objects.equals(workPhone, that.workPhone) && Objects.equals(allPhones, that.allPhones) && Objects.equals(email, that.email) && Objects.equals(email2, that.email2) && Objects.equals(email3, that.email3) && Objects.equals(allEmails, that.allEmails);
+    return id == that.id
+            && Objects.equals(firstName, that.firstName)
+            && Objects.equals(lastName, that.lastName)
+            && Objects.equals(group, that.group)
+            && Objects.equals(address, that.address)
+            && Objects.equals(homePhone, that.homePhone)
+            && Objects.equals(mobilePhone, that.mobilePhone)
+            && Objects.equals(workPhone, that.workPhone)
+            && Objects.equals(allPhones, that.allPhones)
+            && Objects.equals(email, that.email)
+            && Objects.equals(email2, that.email2)
+            && Objects.equals(email3, that.email3)
+            && Objects.equals(allEmails, that.allEmails);
   }
 
   @Override
@@ -114,13 +127,17 @@ public class ContactData {
             "id=" + id +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
+            ", group='" + group + '\'' +
             ", address='" + address + '\'' +
             ", homePhone='" + homePhone + '\'' +
             ", mobilePhone='" + mobilePhone + '\'' +
             ", workPhone='" + workPhone + '\'' +
+            ", allPhones='" + allPhones + '\'' +
             ", email='" + email + '\'' +
             ", email2='" + email2 + '\'' +
             ", email3='" + email3 + '\'' +
+            ", allEmails='" + allEmails + '\'' +
+            ", photo='" + photo + '\'' +
             '}';
   }
 

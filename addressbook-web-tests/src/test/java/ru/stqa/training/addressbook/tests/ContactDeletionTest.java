@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import ru.stqa.training.addressbook.model.ContactData;
 import ru.stqa.training.addressbook.model.Contacts;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -19,6 +21,11 @@ public class ContactDeletionTest extends TestBase {
               .withAddress("Address")
               .withHomePhone("1000")
               .withEmail("test@email.test");
+      File photo = new File("src" + File.separator
+              + "test" + File.separator
+              + "resources" + File.separator
+              + "stru.jpeg");
+      contact.withPhoto(photo);
       app.goTo().contactPage();
       app.contact().create(contact);
     }
@@ -34,6 +41,7 @@ public class ContactDeletionTest extends TestBase {
     assertThat(app.contact().getContactCount(), equalTo(before.size() - 1));
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(deletedContact)));
+    verifyContactListInUi();
   }
 
 }
