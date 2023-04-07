@@ -4,9 +4,10 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.training.addressbook.model.ContactData;
 import ru.stqa.training.addressbook.model.Contacts;
-import ru.stqa.training.addressbook.tests.ContactPhoneTests;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +29,7 @@ public class ContactHelper extends HelperBase {
     click(By.name("submit"));
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("lastname"), contactData.getLastName());
     type(By.name("address"), contactData.getAddress());
@@ -39,6 +40,12 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail_2());
     type(By.name("email3"), contactData.getEmail_3());
     attache(By.name("photo"), contactData.getPhoto());
+    if (creation == true) {
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
+    }
   }
 
   public void initContactCreation() {
@@ -74,7 +81,7 @@ public class ContactHelper extends HelperBase {
 
   public void create(ContactData contact) {
     initContactCreation();
-    fillContactForm(contact);
+    fillContactForm(contact, true);
     submitContactCreation();
     contactCache = null;
     returnToContactPage();
@@ -82,7 +89,7 @@ public class ContactHelper extends HelperBase {
 
   public void modify(ContactData contact) {
     initContactModification(contact.getId());
-    fillContactForm(contact);
+    fillContactForm(contact, false);
     submitContactModification();
     contactCache = null;
     returnToHomePage();

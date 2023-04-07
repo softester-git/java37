@@ -6,6 +6,8 @@ import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.*;
 import ru.stqa.training.addressbook.model.ContactData;
 import ru.stqa.training.addressbook.model.Contacts;
+import ru.stqa.training.addressbook.model.GroupData;
+import ru.stqa.training.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -73,13 +75,28 @@ public class ContactCreationTests extends TestBase {
     }
   }
 
+
+  @BeforeMethod
+  public void ensurePreconditions() {
+    if (app.db().groups().size() == 0) {
+      GroupData group = new GroupData()
+              .withName("GroupName")
+              .withHeader("GroupHeader")
+              .withFooter("GroupFooter");
+      app.goTo().groupPage();
+      app.group().create(group);
+    }
+  }
+
   @Test(dataProvider = "validContactsJson")
   public void testContactCreation(ContactData contact) {
+    Groups groups = app.db().groups();
     File photo = new File("src" + File.separator
             + "test" + File.separator
             + "resources" + File.separator
             + "stru.jpeg");
     contact.withPhoto(photo);
+    contact.inGroup(groups.iterator().next());
 
     app.goTo().contactPage();
     Contacts before = app.db().contacts();
