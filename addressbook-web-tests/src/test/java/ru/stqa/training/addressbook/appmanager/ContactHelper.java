@@ -43,7 +43,8 @@ public class ContactHelper extends HelperBase {
     if (creation == true) {
       if (contactData.getGroups().size() > 0) {
         Assert.assertTrue(contactData.getGroups().size() == 1);
-        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+        new Select(wd.findElement(By.name("new_group")))
+                .selectByValue(String.valueOf(contactData.getGroups().iterator().next().getId()));
       }
     }
   }
@@ -80,6 +81,10 @@ public class ContactHelper extends HelperBase {
 
   public void submitGroupAdding() {
     click(By.name("add"));
+  }
+
+  public void submitGroupRemoving() {
+    click(By.name("remove"));
   }
 
   public void returnToHomePage() {
