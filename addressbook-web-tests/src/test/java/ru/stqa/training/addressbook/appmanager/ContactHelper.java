@@ -48,6 +48,9 @@ public class ContactHelper extends HelperBase {
     }
   }
 
+  public void selectGroupForAdd(int idGroup) {
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(idGroup));
+  }
   public void initContactCreation() {
     click(By.linkText("add new"));
   }
@@ -73,6 +76,10 @@ public class ContactHelper extends HelperBase {
 
   public void submitContactModification() {
     click(By.name("update"));
+  }
+
+  public void submitGroupAdding() {
+    click(By.name("add"));
   }
 
   public void returnToHomePage() {

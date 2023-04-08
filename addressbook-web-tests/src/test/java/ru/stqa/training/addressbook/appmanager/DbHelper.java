@@ -11,6 +11,7 @@ import ru.stqa.training.addressbook.model.Groups;
 import ru.stqa.training.addressbook.model.GroupData;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DbHelper {
 
@@ -41,4 +42,20 @@ public class DbHelper {
     return new Contacts(result);
   }
 
+  public boolean isContactInGroup(int idContact, int idGroup) {
+    Contacts contacts = contacts();
+    List<ContactData> contact = contacts
+            .stream()
+            .filter(c -> c.getId() == idContact)
+            .collect(Collectors.toList());
+    Groups groupsInContact = contact.get(0).getGroups();
+
+    Groups groups = groups();
+    List<GroupData> group = groups
+            .stream()
+            .filter(g -> g.getId() == idGroup)
+            .collect(Collectors.toList());
+
+    return groupsInContact.contains(group.get(0));
+  }
 }
