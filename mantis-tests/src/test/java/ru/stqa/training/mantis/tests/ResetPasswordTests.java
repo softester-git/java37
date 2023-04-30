@@ -7,13 +7,15 @@ import ru.stqa.training.mantis.model.MailMessage;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 
 public class ResetPasswordTests extends TestBase {
 
-  private final String user = "resetuser02";
+  private final String user = "testuser_0444";
+
   private final String curPassword = "password";
   private final String newPassword = "password001";
   private final String email = user + "@s210";
@@ -41,6 +43,7 @@ public class ResetPasswordTests extends TestBase {
   }
 
   private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
+    Collections.reverse(mailMessages);
     MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
     VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
     return regex.getText(mailMessage.text);

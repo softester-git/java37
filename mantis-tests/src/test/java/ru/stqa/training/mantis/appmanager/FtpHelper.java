@@ -20,7 +20,7 @@ public class FtpHelper {
   public void upload(File file, String target, String backup) throws IOException {
     ftp.connect(app.getProperty("ftp.host"));
     ftp.login(app.getProperty("ftp.login"), app.getProperty("ftp.password"));
-    ftp.changeWorkingDirectory("mantisbt-2.25.6/config");
+    ftp.changeWorkingDirectory(app.getProperty("mantisbt.config"));
     ftp.deleteFile(backup);
     ftp.rename(target, backup);
     ftp.enterLocalPassiveMode();
@@ -31,7 +31,7 @@ public class FtpHelper {
   public void restore(String backup, String target) throws IOException {
     ftp.connect(app.getProperty("ftp.host"));
     ftp.login(app.getProperty("ftp.login"), app.getProperty("ftp.password"));
-    ftp.changeWorkingDirectory("mantisbt-2.25.6/config");
+    ftp.changeWorkingDirectory(app.getProperty("mantisbt.path_to_config"));
     ftp.deleteFile(target);
     ftp.rename(backup, target);
     ftp.disconnect();

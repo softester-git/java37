@@ -33,6 +33,14 @@
         </option>
         <option name="resolveExternalAnnotations" value="false" />
       </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/soap-sample" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/soap-sample" />
+          </set>
+        </option>
+      </GradleProjectSettings>
     </option>
   </component>
 </project>
