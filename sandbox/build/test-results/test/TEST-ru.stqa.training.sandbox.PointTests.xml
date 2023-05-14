@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.training.sandbox.PointTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-05-14T05:17:01" hostname="S210" time="0.024">
+  <properties/>
+  <testcase name="testPointDistanceA" classname="ru.stqa.training.sandbox.PointTests" time="0.001"/>
+  <testcase name="testPointDistanceB" classname="ru.stqa.training.sandbox.PointTests" time="0.001"/>
+  <testcase name="testPointDistanceC" classname="ru.stqa.training.sandbox.PointTests" time="0.001"/>
+  <testcase name="testPointDistanceE" classname="ru.stqa.training.sandbox.PointTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<list>
+  <contact>
+    <firstName>TestFirstName0</firstName>
+    <lastName>TestLastName0</lastName>
+    <address>TestAddress0</address>
+    <homePhone>100000</homePhone>
+    <email>test0@mail.test</email>
+  </contact>
+</list>

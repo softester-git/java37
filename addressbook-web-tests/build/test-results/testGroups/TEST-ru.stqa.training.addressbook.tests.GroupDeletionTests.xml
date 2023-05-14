@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.training.addressbook.tests.GroupDeletionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-04-04T09:34:29" hostname="S210" time="1.098">
+  <properties/>
+  <testcase name="testGroupDeletion" classname="ru.stqa.training.addressbook.tests.GroupDeletionTests" time="1.098"/>
+  <system-out><![CDATA[12:34:29.323 [Test worker] INFO  r.s.t.addressbook.tests.TestBase -%PARSER_ERROR[kvp]- Start test testGroupDeletion with parameters []
+Hibernate: select groupdata0_.group_id as group_id1_1_, groupdata0_.group_footer as group_fo2_1_, groupdata0_.group_header as group_he3_1_, groupdata0_.group_name as group_na4_1_ from group_list groupdata0_ where deprecated='0000-00-00'
+Hibernate: select groupdata0_.group_id as group_id1_1_, groupdata0_.group_footer as group_fo2_1_, groupdata0_.group_header as group_he3_1_, groupdata0_.group_name as group_na4_1_ from group_list groupdata0_ where deprecated='0000-00-00'
+Hibernate: select groupdata0_.group_id as group_id1_1_, groupdata0_.group_footer as group_fo2_1_, groupdata0_.group_header as group_he3_1_, groupdata0_.group_name as group_na4_1_ from group_list groupdata0_ where deprecated='0000-00-00'
+!!!verifyGroupListInUi!!!
+Hibernate: select groupdata0_.group_id as group_id1_1_, groupdata0_.group_footer as group_fo2_1_, groupdata0_.group_header as group_he3_1_, groupdata0_.group_name as group_na4_1_ from group_list groupdata0_ where deprecated='0000-00-00'
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
