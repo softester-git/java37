@@ -44,6 +44,8 @@ public class ApplicationManager {
       wd = new ChromeDriver();
     } else if (Objects.equals(browser, BrowserType.IE)) {
       wd = new InternetExplorerDriver();
+    } else {
+      wd = new FirefoxDriver();
     }
 
     wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
